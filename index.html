@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Glow Up ✨</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Parisienne&display=swap');
+
+:root{
+  --pink:#ee9ab2;
+  --light:#fff3f6;
+  --rose:#a85473;
+  --dark:#553b44;
+  --muted:#957e87;
+  --line:#efdce3;
+  --white:#fffdfc;
+  --shadow:0 18px 45px rgba(119,65,82,.08);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:linear-gradient(135deg,#fffafa,#fdf0f4);
+  color:var(--dark);
+  font-family:"DM Sans",sans-serif;
+}
+button{font:inherit;cursor:pointer}
+button,input,textarea,select{outline:none}
+
+.app{min-height:100vh}
+
+.sidebar{
+  position:fixed;
+  left:0;top:0;bottom:0;
+  width:245px;
+  padding:24px 16px;
+  background:#fffaf9ee;
+  border-right:1px solid var(--line);
+  backdrop-filter:blur(18px);
+  z-index:20;
+}
+
+.brand{
+  text-align:center;
+  font:700 34px "Playfair Display";
+  color:#743f51;
+}
+.brand span{color:var(--pink)}
+
+.tagline{
+  text-align:center;
+  color:#df7897;
+  font-size:12px;
+  margin:5px 0 24px;
+}
+
+.nav{
+  display:grid;
+  gap:4px;
+}
+
+.nav button{
+  border:0;
+  background:transparent;
+  color:#6d555e;
+  text-align:left;
+  padding:12px 13px;
+  border-radius:14px;
+}
+
+.nav button:hover,
+.nav button.active{
+  background:#f9dfe7;
+  color:#974d69;
+  font-weight:700;
+}
+
+.side-note{
+  position:absolute;
+  bottom:100px;
+  left:16px;
+  right:16px;
+  background:#ffe7ed;
+  border:1px solid #f3ccd8;
+  border-radius:18px;
+  padding:15px;
+  color:#905269;
+  font-size:13px;
+}
+
+.side-profile{
+  position:absolute;
+  bottom:17px;
+  left:16px;
+  right:16px;
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:white;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#e8a4b9,#96536d);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-weight:700;
+}
+
+.main{
+  margin-left:245px;
+}
+
+.topbar{
+  height:70px;
+  position:sticky;
+  top:0;
+  z-index:15;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:9px;
+  padding:0 28px;
+  background:#fffaf9df;
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.topbar button{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:white;
+  color:#95536b;
+}
+
+.content{
+  max-width:1450px;
+  margin:auto;
+  padding:28px;
+}
+
+.page{display:none}
+.page.active{display:block}
+
+.hero{
+  min-height:310px;
+  padding:38px;
+  border-radius:30px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:
+  linear-gradient(90deg,rgba(255,246,244,.94),rgba(255,237,243,.72)),
+  url("https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1600&q=80")
+  center/cover;
+  box-shadow:var(--shadow);
+}
+
+.hero h1{
+  font:600 58px "Playfair Display";
+  margin:7px 0;
+  color:#673f4b;
+}
+
+.eyebrow{
+  color:#a65b72;
+  font-size:11px;
+  letter-spacing:2px;
+  font-weight:700;
+}
+
+.script{
+  font:42px Parisienne;
+  color:#d66f8d;
+}
+
+.hero p{
+  max-width:500px;
+  line-height:1.7;
+  color:#785f68;
+}
+
+.primary{
+  border:0;
+  color:white;
+  padding:13px 21px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#f1a2b8,#d87596);
+  box-shadow:0 9px 22px rgba(210,105,140,.2);
+  font-weight:700;
+}
+
+.id-card{
+  width:315px;
+  padding:17px;
+  border:1px solid #e9ccd5;
+  border-radius:21px;
+  background:#fffdfcf2;
+  box-shadow:0 20px 40px rgba(93,49,61,.13);
+}
+
+.id-top{
+  display:flex;
+  justify-content:space-between;
+  color:#a45a70;
+  font-size:11px;
+  font-weight:700;
+}
+
+.id-body{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  margin:15px 0;
+}
+
+.id-photo{
+  width:92px;
+  height:105px;
+  border-radius:12px;
+  background:url("https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80") center/cover;
+}
+
+.id-name{
+  font:600 22px "Playfair Display";
+  color:#8d4c64;
+}
+
+.stars{
+  color:#df829b;
+  margin-top:5px;
+}
+
+.barcode{
+  height:25px;
+  margin-top:7px;
+  background:repeating-linear-gradient(
+    90deg,#69404d 0 2px,transparent 2px 5px
+  );
+  opacity:.6;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin:15px 0;
+}
+
+.card,
+.stat{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:21px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.stat small{color:var(--muted)}
+.stat strong{
+  display:block;
+  font-size:25px;
+  margin-top:4px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:25px 0 13px;
+}
+
+.section-head h2{
+  margin:0;
+  font:600 26px "Playfair Display";
+}
+
+.section-head button{
+  border:0;
+  background:none;
+  color:#ad5b78;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.cover{
+  height:155px;
+  background:center/cover;
+  position:relative;
+}
+
+.heart{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  background:white;
+  color:#d36f8c;
+  font-size:18px;
+}
+
+.card-body{padding:14px}
+
+.card-body h3{
+  margin:0 0 5px;
+  font:600 20px "Playfair Display";
+}
+
+.muted{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:10px;
+}
+
+.chip{
+  background:#fbe6ed;
+  color:#99516c;
+  padding:7px 10px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.twocol{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:15px;
+  margin-top:15px;
+}
+
+.post-cover{
+  height:190px;
+  border-radius:15px;
+  background:center/cover;
+}
+
+.post-user{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:10px;
+}
+
+.post-actions{
+  display:flex;
+  gap:18px;
+  margin-top:12px;
+}
+
+.post-actions button{
+  border:0;
+  background:none;
+  color:#80616b;
+}
+
+.habit{text-align:center}
+
+.ring{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  margin:5px auto 12px;
+  background:conic-gradient(#ed8faa 60%,#f7e5e9 0);
+  display:grid;
+  place-items:center;
+}
+
+.ring:after{
+  content:"3 / 5";
+  width:76px;
+  height:76px;
+  border-radius:50%;
+  background:white;
+  display:grid;
+  place-items:center;
+  font-weight:700;
+  color:#98516b;
+}
+
+.mission{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.mission-icon{
+  width:55px;
+  height:55px;
+  flex:none;
+  border-radius:16px;
+  background:#fde6ed;
+  display:grid;
+  place-items:center;
+  font-size:25px;
+}
+
+.mission-body{flex:1}
+
+.xp{
+  color:#a4516c;
+  font-size:12px;
+  font-weight:700;
+}
+
+.vlog{
+  height:155px;
+  border-radius:17px;
+  background:center/cover;
+  position:relative;
+}
+
+.play{
+  position:absolute;
+  left:10px;
+  bottom:10px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#ffffffdd;
+  display:grid;
+  place-items:center;
+  color:#a75470;
+}
+
+.program .cover{
+  height:175px;
+}
+
+.program .cover:after{
+  content:"▶";
+  position:absolute;
+  left:12px;
+  bottom:12px;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:white;
+  display:grid;
+  place-items:center;
+  color:#a85773;
+}
+
+.hobby{
+  display:flex;
+  gap:15px;
+  align-items:flex-start;
+  transition:.2s;
+}
+
+.hobby:hover{
+  transform:translateY(-3px);
+}
+
+.hobby-icon{
+  font-size:38px;
+}
+
+.profile{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:25px;
+  align-items:center;
+}
+
+.profile-photo{
+  width:165px;
+  height:165px;
+  border-radius:30px;
+  background:url("https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=500&q=80") center/cover;
+}
+
+.profile-name{
+  font:600 39px "Playfair Display";
+}
+
+.badges{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+}
+
+.badge{text-align:center}
+.badge-icon{font-size:42px}
+
+textarea,
+.input{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:13px;
+  background:#fffdfc;
+  resize:vertical;
+  margin-bottom:10px;
+}
+
+.mission-list{
+  display:grid;
+  gap:10px;
+}
+
+.locked{opacity:.45}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:#38242d88;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  z-index:100;
+}
+
+.modal-box{
+  width:min(650px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:#fffafa;
+  border-radius:27px;
+  padding:25px;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  border:0;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#fbe5eb;
+  color:#98516b;
+  font-size:20px;
+}
+
+.modal-img{
+  height:210px;
+  border-radius:20px;
+  background:center/cover;
+  margin-bottom:15px;
+}
+
+.bottom{
+  display:none;
+}
+
+@media(max-width:1050px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:28px}
+  .id-card{width:285px}
+}
+
+@media(max-width:760px){
+  .sidebar{display:none}
+  .main{margin-left:0}
+  .topbar{height:62px;padding:0 14px}
+  .content{padding:14px 12px 95px}
+  .hero{
+    display:block;
+    padding:25px;
+    min-height:500px;
+  }
+  .hero h1{font-size:43px}
+  .script{font-size:34px}
+  .id-card{
+    width:100%;
+    margin-top:25px;
+  }
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .grid,
+  .twocol{
+    grid-template-columns:1fr;
+  }
+  .profile{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .profile-photo{margin:auto}
+  .badges{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .bottom{
+    position:fixed;
+    display:flex;
+    left:8px;
+    right:8px;
+    bottom:8px;
+    height:65px;
+    border-radius:22px;
+    background:#fffaf9ee;
+    border:1px solid var(--line);
+    box-shadow:0 12px 35px rgba(75,39,51,.15);
+    backdrop-filter:blur(15px);
+    z-index:30;
+    align-items:center;
+    justify-content:space-around;
+  }
+  .bottom button{
+    border:0;
+    background:none;
+    color:#765e67;
+    font-size:18px;
+  }
+  .bottom span{
+    display:block;
+    font-size:9px;
+  }
+  .bottom .plus{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:#efa0b7;
+    color:white;
+    font-size:25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<aside class="sidebar">
+
+<div class="brand">Glow Up <span>✦</span></div>
+<div class="tagline">Your girl era starts here</div>
+
+<nav class="nav">
+
+<button class="active" data-page="home">⌂　Home</button>
+<button data-page="recipes">♨　Recipes</button>
+<button data-page="workouts">♧　Workouts & Pilates</button>
+<button data-page="programs">▣　Programs</button>
+<button data-page="hobbies">◉　Hobbies</button>
+<button data-page="beauty">♡　Skincare & Beauty</button>
+<button data-page="community">♧　Community</button>
+<button data-page="vlogs">▣　Daily Vlogs</button>
+<button data-page="diary">▤　Diaries</button>
+<button data-page="missions">♡　Share & Missions</button>
+<button data-page="favorites">♡　Favorites</button>
+<button data-page="saved">▱　Saved</button>
+
+</nav>
+
+<div class="side-note">
+<b>You’re glowing!</b><br>
+Small steps every day,<br>
+big changes forever ♡
+</div>
+
+<div class="side-profile">
+<div class="avatar">G</div>
+<div>
+<b>Glow Queen 👑</b>
+<div class="muted">Level 8 · 780 XP</div>
+</div>
+</div>
+
+</aside>
+
+
+<main class="main">
+
+<header class="topbar">
+<button>⌕</button>
+<button>♡</button>
+<button>♧</button>
+<div class="avatar">G</div>
+</header>
+
+
+<div class="content">
+
+<!-- HOME -->
+
+<section class="page active" id="home">
+
+<div class="hero">
+
+<div>
+
+<div class="eyebrow">
+WELCOME TO YOUR GIRL ERA ✦
+</div>
+
+<h1>Glow Up ✨</h1>
+
+<div class="script">
+Your girl era starts with one small step ♡
+</div>
+
+<p>
+Build your routines, discover what you love,
+move your body, eat cute food, share your little wins
+and become your best self — your way.
+</p>
+
+<button class="primary" onclick="go('missions')">
+✦ Start your journey ✦
+</button>
+
+</div>
+
+
+<div class="id-card">
+
+<div class="id-top">
+<span>GLOW UP CLUB</span>
+<span>♡</span>
+</div>
+
+<div class="id-body">
+
+<div class="id-photo"></div>
+
+<div>
+<small>ID CARD</small>
+<div class="id-name">GLOW QUEEN 👑</div>
+<span class="chip">Level 8</span>
+<div class="stars">★ ★ ★ ★ ☆</div>
+</div>
+
+</div>
+
+<small>YOU GLOW DIFFERENTLY</small>
+<div class="barcode"></div>
+
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+<small>▣ Days</small>
+<strong>23</strong>
+</div>
+
+<div class="stat">
+<small>♡ Missions</small>
+<strong id="missionNumber">14</strong>
+</div>
+
+<div class="stat">
+<small>☆ Habits</small>
+<strong>7</strong>
+</div>
+
+<div class="stat">
+<small>◎ Goals</small>
+<strong>3</strong>
+</div>
+
+</div>
+
+
+<div class="section-head">
+<h2>What's cooking? 🥑 ✦</h2>
+<button onclick="go('recipes')">See all recipes ›</button>
+</div>
+
+<div class="grid" id="homeRecipes"></div>
+
+
+<div class="section-head">
+<h2>Pick your program 💗</h2>
+<button onclick="go('programs')">Explore all ›</button>
+</div>
+
+<div class="grid" id="homePrograms"></div>
+
+
+<div class="twocol">
+
+<div>
+
+<div class="section-head">
+<h2>Community Feed</h2>
+<button onclick="go('community')">See all ›</button>
+</div>
+
+<div class="card">
+
+<div class="post-user">
+<div class="avatar">M</div>
+<div>
+<b>moonlight</b>
+<div class="muted">2h ago</div>
+</div>
+</div>
+
+<p>
+Just a girl who decided to go for it 💗
+</p>
+
+<div
+class="post-cover"
+style="background-image:url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=900&q=80')">
+</div>
+
+<div class="post-actions">
+<button>♥ 241</button>
+<button>♡ 18</button>
+<button>♧</button>
+</div>
+
+</div>
+
+</div>
+
+
+<div>
+
+<div class="section-head">
+<h2>Today's Habit</h2>
+</div>
+
+<div class="card habit">
+
+<div class="ring"></div>
+
+<h3>Drink water</h3>
+
+<p class="muted">
+You've got this!
+</p>
+
+<button class="primary" onclick="toast('Habit checked in ✦')">
+♧ Check in
+</button>
+
+</div>
+
+
+<div class="section-head">
+<h2>Today's Mission</h2>
+</div>
+
+<div class="card mission">
+
+<div class="mission-icon">♡</div>
+
+<div class="mission-body">
+
+<b>Share your healthy breakfast</b>
+
+<div class="xp">
++50 XP ✦
+</div>
+
+</div>
+
+<button class="primary" onclick="go('missions')">
+Share
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="section-head">
+<h2>Daily Vlog Inspo</h2>
+<button onclick="go('vlogs')">See all ›</button>
+</div>
+
+<div class="grid" id="homeVlogs"></div>
+
+</section>
+
+
+<!-- RECIPES -->
+
+<section class="page" id="recipes">
+
+<h1 style="font:600 42px 'Playfair Display'">
+Glow Kitchen 🍓
+</h1>
+
+<p class="muted">
+Healthy, cozy, trendy and sweet — all the food you actually want to make.
+</p>
+
+<div class="grid" id="allRecipes"></div>
+
+</section>
+
+
+<!-- WORKOUTS -->
+
+<section class="page" id="workouts">
+
+<h1 style="font:600 42px 'Playfair Display'">
+Workouts & Pilates 🧘‍♀️
+</h1>
+
+<p class="muted">
+Choose your mood, level and style. Movement, not punishment.
+</p>
+
+<div class="grid" id="workoutsGrid"></div>
+
+</section>
+
+
+<!-- PROGRAMS -->
+
+<section class="page" id="programs">
+
+<h1 style="font:600 42px 'Playfair Display'">
+Pick Your Program 💗
+</h1>
+
+<p class="muted">
+Choose a path that fits your life — and change it whenever you want.
+</p>
+
+<div class="grid" id="programsGrid"></div>
+
+</section>
+
+
+<!-- HOBBIES -->
+
+<section class="page" id="hobbies">
+
+<h1 style="font:600 42px 'Playfair Display'">
+Discover Yourself 🎨
+</h1>
+
+<p class="muted">
+You don't have to know your passion yet. Try things until something feels like you.
+</p>
+
+<div class="grid" id="hobbiesGrid"></div>
+
+</section>
+
+
+<!-- BEAUTY -->
+
+<section class="page" id="beauty">
+
+<h1 style="font:600 42px 'Playfair Display'">
+Skincare & Beauty 🧴
+</h1>
+
+<p class="muted">
+Learn routines, ingredients and product categories so you can shop smarter.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>🌸 AM Routine</h3>
+<p class="muted">
+Cleanser → hydration → moisturizer → broad-spectrum SPF.
+</p>
+<div class="chips">
+<span class="chip">Niacinamide</span>
+<span class="chip">Ceramides</span>
+<span class="chip">Hyaluronic Acid</span>
+</div>
+</div>
+
+<div class="card">
+<h3>🌙 PM Routine</h3>
+<p class="muted">
+Remove makeup/SPF → cleanse → treatment if appropriate → moisturize.
+</p>
+<div class="chips">
+<span class="chip">Retinoids</span>
+<span class="chip">Barrier Care</span>
+</div>
+</div>
+
+<div class="card">
+<h3>🛍️ Product Decoder</h3>
+<p class="muted">
+Understand what products are designed to do before buying them.
+</p>
+<button class="primary" onclick="toast('Product explorer coming soon ✦')">
+Explore Products
+</button>
+</div>
+
+<div class="card">
+<h3>💄 Makeup Corner</h3>
+<p class="muted">
+Base, blush, mascara, lips, brows and different aesthetics.
+</p>
+<div class="chips">
+<span class="chip">Clean</span>
+<span class="chip">Soft Glam</span>
+<span class="chip">Romantic</span>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- COMMUNITY -->
+
+<section class="page" id="community">
+
+<h1 style="font:600 42px 'Playfair Display'">
+Glow Community 👭
+</h1>
+
+<p class="muted">
+Share missions, routines, meals, hobbies, outfits and daily vlogs —
+only when you choose.
+</p>
+
+<div class="card">
+
+<textarea
+id="postText"
+rows="5"
+placeholder="Share your little win, routine, meal or vlog... ✨">
+</textarea>
+
+<div style="display:flex;justify-content:flex-end;gap:8px">
+
+<select id="privacy" style="padding:12px;border:1px solid var(--line);border-radius:13px">
+<option>Community</option>
+<option>Only me 🔒</option>
+</select>
+
+<button class="primary" onclick="sharePost()">
+Share ✦
+</button>
+
+</div>
+
+</div>
+
+<div class="section-head">
+<h2>Girls' Feed</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="post-user">
+<div class="avatar">L</div>
+<div>
+<b>lina.glow</b>
+<div class="muted">2h ago</div>
+</div>
+</div>
+
+<p>
+Finished my Pilates session and I'm actually proud of myself 💗
+</p>
+
+<div
+class="post-cover"
+style="background-image:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80')">
+</div>
+
+<div class="post-actions">
+<button>♥ 84</button>
+<button>♡ 12</button>
+<button>♧</button>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="post-user">
+<div class="avatar">S</div>
+<div>
+<b>sara</b>
+<div class="muted">4h ago</div>
+</div>
+</div>
+
+<p>
+Made the cutest fruit bowl today 🍓
+</p>
+
+<div
+class="post-cover"
+style="background-image:url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=900&q=80')">
+</div>
+
+<div class="post-actions">
+<button>♥ 51</button>
+<button>♡ 7</button>
+<button>♧</button>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VLOGS -->
+
+<section class="page" id="vlogs">
+
+<h1 style="font:600 42px 'Playfair Display'">
+Daily Vlogs 🎥
+</h1>
+
+<p class="muted">
+Morning routines, what-I-eat, Pilates days, study days and self-care nights.
+</p>
+
+<div class="grid" id="allVlogs"></div>
+
+</section>
+
+
+<!-- DIARY -->
+
+<section class="page" id="diary">
+
+<h1 style="font:600 42px 'Playfair Display'">
+My Diaries 📖
+</h1>
+
+<p class="muted">
+Your private little place for thoughts, moods, wins and memories.
+</p>
+
+<div class="card">
+
+<textarea
+id="diaryText"
+rows="8"
+placeholder="Dear diary... ♡">
+</textarea>
+
+<button class="primary" onclick="saveDiary()">
+Save privately 🔒
+</button>
+
+</div>
+
+<div id="diaryList" style="margin-top:15px"></div>
+
+</section>
+
+
+<!-- MISSIONS -->
+
+<section class="page" id="missions">
+
+<h1 style="font:600 42px 'Playfair Display'">
+Share & Missions ✦
+</h1>
+
+<p class="muted">
+Complete small missions, collect XP, unlock levels and share your progress.
+</p>
+
+<div class="mission-list" id="missionList"></div>
+
+</section>
+
+
+<!-- FAVORITES -->
+
+<section class="page" id="favorites">
+
+<h1 style="font:600 42px 'Playfair Display'">
+Favorites ♡
+</h1>
+
+<div class="card">
+<h3>Your favorite Glow Up content</h3>
+<p class="muted">
+Save recipes, programs, products and posts you love.
+</p>
+</div>
+
+</section>
+
+
+<!-- SAVED -->
+
+<section class="page" id="saved">
+
+<h1 style="font:600 42px 'Playfair Display'">
+Saved ▱
+</h1>
+
+<div class="card">
+<h3>Your saved inspiration</h3>
+<p class="muted">
+Your recipes, routines and discoveries will live here.
+</p>
+</div>
+
+</section>
+
+</div>
+</main>
+
+
+<!-- MOBILE NAV -->
+
+<nav class="bottom">
+
+<button data-page="home">
+⌂
+<span>Home</span>
+</button>
+
+<button data-page="recipes">
+♨
+<span>Recipes</span>
+</button>
+
+<button data-page="workouts">
+♧
+<span>Workouts</span>
+</button>
+
+<button class="plus" onclick="go('missions')">
+＋
+</button>
+
+<button data-page="community">
+♧
+<span>Community</span>
+</button>
+
+<button data-page="diary">
+▤
+<span>Diaries</span>
+</button>
+
+</nav>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeModal()">×</button>
+
+<div class="modal-img" id="modalImg"></div>
+
+<h2 id="modalTitle" style="font:600 32px 'Playfair Display'"></h2>
+
+<p id="modalDescription" class="muted"></p>
+
+<h3>What's inside</h3>
+
+<ul id="modalIngredients"></ul>
+
+</div>
+
+</div>
+
+
+<script>
+
+const recipes=[
+
+["Avocado Toast","Breakfast",
+"https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=900&q=80",
+["Bread","Avocado","Egg","Lemon"]],
+
+["Pesto Pasta","Lunch",
+"https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=80",
+["Pasta","Pesto","Parmesan","Tomatoes"]],
+
+["Mini Tacos","Fun Meal",
+"https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=900&q=80",
+["Mini tortillas","Chicken or beans","Lettuce","Avocado"]],
+
+["Berry Smoothie Bowl","Breakfast",
+"https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=900&q=80",
+["Berries","Banana","Yogurt","Oats"]],
+
+["Salmon Bowl","Lunch",
+"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
+["Salmon","Rice","Avocado","Cucumber"]],
+
+["Banana Pancakes","Breakfast",
+"https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=80",
+["Banana","Egg","Oats","Cinnamon"]],
+
+["Brownie Bites","Sweet",
+"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80",
+["Chocolate","Butter","Egg","Flour"]],
+
+["Cute Movie Snack","Snack",
+"https://images.unsplash.com/photo-1578849278619-e73505e9610f?auto=format&fit=crop&w=900&q=80",
+["Popcorn","Fruit","Chocolate"]]
+
+];
+
+
+const programs=[
+
+["Glow Strong","8 weeks",
+"Strength + confidence",
+"https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80"],
+
+["Pilates","4 weeks",
+"Core + flow + mobility",
+"https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=900&q=80"],
+
+["Slim & Sculpt","6 weeks",
+"Full body movement",
+"https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80"],
+
+["Healthy Habits","21 days",
+"Hydration + movement + routine",
+"https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=900&q=80"]
+
+];
+
+
+const workouts=[
+
+["Pilates Core & Flow","Beginner · 20 min",
+"https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80"],
+
+["Full Body Pilates","Beginner · 25 min",
+"https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=900&q=80"],
+
+["Low Impact Workout","Beginner · 20 min",
+"https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80"],
+
+["Strength Girl","Intermediate · 35 min",
+"https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80"]
+
+];
+
+
+const hobbies=[
+
+["🎨","Art","Drawing, painting, digital art and creative experiments."],
+["🎵","Music","Singing, playlists or learning an instrument."],
+["📚","Reading","Books, novels, psychology and stories."],
+["🍳","Cooking","Recipes, baking and creating your own dishes."],
+["📸","Photography","Capture outfits, food, nature and everyday life."],
+["✍️","Writing","Journaling, poetry, stories and creative writing."],
+["💃","Dance","Learn choreography and discover your style."],
+["💻","Digital Creation","Editing, websites, design and content."],
+["🌍","Languages","Discover languages and cultures."],
+["🧁","Baking","Pretty desserts, cakes and brownies."],
+["🧵","DIY","Create things with your own hands."],
+["🌱","Plants","Build your own little green corner."]
+
+];
+
+
+const vlogs=[
+
+["Morning Routine","7:21",
+"https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=900&q=80"],
+
+["What I Eat in a Day","5:43",
+"https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=900&q=80"],
+
+["Pilates Day","5:43",
+"https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80"],
+
+["Self Care Night","8:15",
+"https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80"]
+
+];
+
+
+const missions=[
+
+"Drink water",
+"10 minute room reset",
+"Move your body",
+"Complete your skincare",
+"Make a nourishing meal",
+"20 minutes phone-free",
+"Write a diary entry",
+"Try a new hobby",
+"Write 3 things you like about yourself",
+"Full Glow Day"
+
+];
+
+
+let completed=
+JSON.parse(localStorage.getItem("glowCompleted")||"[]");
+
+let diaries=
+JSON.parse(localStorage.getItem("glowDiaries")||"[]");
+
+
+function go(page){
+
+document.querySelectorAll(".page")
+.forEach(x=>x.classList.remove("active"));
+
+document.getElementById(page)?.classList.add("active");
+
+document.querySelectorAll("[data-page]")
+.forEach(x=>{
+x.classList.toggle("active",x.dataset.page===page);
+});
+
+window.scrollTo({top:0,behavior:"smooth"});
+
+}
+
+
+function recipeCard(r,i){
+
+return `
+
+<div class="card">
+
+<div
+class="cover"
+style="background-image:url('${r[2]}')">
+
+<button
+class="heart"
+onclick="event.stopPropagation();toast('Saved to favorites ♡')">
+♡
+</button>
+
+</div>
+
+<div class="card-body">
+
+<h3>${r[0]}</h3>
+
+<div class="muted">${r[1]}</div>
+
+<div class="chips">
+<span class="chip">View recipe</span>
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function renderRecipes(){
+
+let home=
+document.getElementById("homeRecipes");
+
+let all=
+document.getElementById("allRecipes");
+
+home.innerHTML=
+recipes.slice(0,4).map(recipeCard).join("");
+
+all.innerHTML=
+recipes.map(recipeCard).join("");
+
+[...home.children,...all.children]
+.forEach((card,index)=>{
+card.onclick=()=>{
+openRecipe(recipes[index%recipes.length]);
+};
+});
+
+}
+
+
+function renderPrograms(){
+
+let home=
+document.getElementById("homePrograms");
+
+let all=
+document.getElementById("programsGrid");
+
+function html(p){
+
+return `
+
+<div class="card">
+
+<div
+class="cover"
+style="background-image:url('${p[3]}')">
+</div>
+
+<div class="card-body">
+
+<h3>${p[0]}</h3>
+
+<div class="muted">
+${p[1]} · ${p[2]}
+</div>
+
+<button
+class="primary"
+style="margin-top:12px"
+onclick="toast('${p[0]} selected ✦')">
+Choose program
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+home.innerHTML=
+programs.map(html).join("");
+
+all.innerHTML=
+programs.map(html).join("");
+
+}
+
+
+function renderWorkouts(){
+
+document.getElementById("workoutsGrid").innerHTML=
+workouts.map(w=>`
+
+<div class="card">
+
+<div
+class="cover"
+style="background-image:url('${w[2]}')">
+</div>
+
+<div class="card-body">
+
+<h3>${w[0]}</h3>
+
+<p class="muted">${w[1]}</p>
+
+<button
+class="primary"
+onclick="toast('Workout selected ✦')">
+Start
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+function renderHobbies(){
+
+document.getElementById("hobbiesGrid").innerHTML=
+hobbies.map(h=>`
+
+<div class="card hobby">
+
+<div class="hobby-icon">${h[0]}</div>
+
+<div>
+
+<h3 style="font-family:'Playfair Display'">
+${h[1]}
+</h3>
+
+<p class="muted">${h[2]}</p>
+
+<button
+class="primary"
+onclick="toast('${h[1]} added to your discoveries ✦')">
+Try it
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+function renderVlogs(){
+
+let html=
+vlogs.map(v=>`
+
+<div>
+
+<div
+class="vlog"
+style="background-image:url('${v[2]}')">
+
+<div class="play">▶</div>
+
+</div>
+
+<b>${v[0]}</b>
+
+<div class="muted">${v[1]}</div>
+
+</div>
+
+`).join("");
+
+document.getElementById("homeVlogs").innerHTML=html;
+document.getElementById("allVlogs").innerHTML=html;
+
+}
+
+
+function renderMissions(){
+
+document.getElementById("missionList").innerHTML=
+missions.map((m,i)=>{
+
+let unlocked=
+i===0 || completed.includes(i-1);
+
+let done=
+completed.includes(i);
+
+return `
+
+<div class="card mission ${unlocked?"":"locked"}">
+
+<div class="mission-icon">
+${done?"✓":"✦"}
+</div>
+
+<div class="mission-body">
+
+<b>
+Mission ${i+1} — ${m}
+</b>
+
+<div class="xp">
++${30+i*5} XP
+</div>
+
+</div>
+
+<button
+class="primary"
+${done||!unlocked?"disabled":""}
+onclick="completeMission(${i})">
+
+${done?"Done ✓":unlocked?"Complete":"Locked 🔒"}
+
+</button>
+
+</div>
+
+`;
+
+}).join("");
+
+document.getElementById("missionNumber").textContent=
+14+completed.length;
+
+}
+
+
+function completeMission(i){
+
+if(completed.includes(i))return;
+
+if(i>0&&!completed.includes(i-1)){
+
+toast("Complete the previous mission first 🔒");
+return;
+
+}
+
+completed.push(i);
+
+localStorage.setItem(
+"glowCompleted",
+JSON.stringify(completed)
+);
+
+renderMissions();
+
+toast(
+"Mission complete! +"+(30+i*5)+" XP ✨"
+);
+
+}
+
+
+function saveDiary(){
+
+let text=
+document.getElementById("diaryText").value.trim();
+
+if(!text){
+
+toast("Write something first ♡");
+return;
+
+}
+
+diaries.unshift({
+
+date:new Date().toLocaleDateString(),
+text:text
+
+});
+
+localStorage.setItem(
+"glowDiaries",
+JSON.stringify(diaries)
+);
+
+document.getElementById("diaryText").value="";
+
+renderDiary();
+
+toast("Saved privately 🔒");
+
+}
+
+
+function renderDiary(){
+
+document.getElementById("diaryList").innerHTML=
+diaries.map(d=>`
+
+<div class="card" style="margin-bottom:10px">
+
+<b>${d.date} · Private 🔒</b>
+
+<p class="muted">
+${escapeHTML(d.text)}
+</p>
+
+</div>
+
+`).join("");
+
+}
+
+
+function sharePost(){
+
+let text=
+document.getElementById("postText").value.trim();
+
+if(!text){
+
+toast("Write something first ✦");
+return;
+
+}
+
+let privacy=
+document.getElementById("privacy").value;
+
+if(privacy.includes("Only")){
+
+toast("Your post was kept private 🔒");
+
+}else{
+
+toast("Shared with the Glow girls ✦");
+
+}
+
+document.getElementById("postText").value="";
+
+}
+
+
+function openRecipe(r){
+
+document.getElementById("modalImg").style.backgroundImage=
+`url('${r[2]}')`;
+
+document.getElementById("modalTitle").textContent=r[0];
+
+document.getElementById("modalDescription").textContent=
+"Easy Glow Up recipe — make it your own.";
+
+document.getElementById("modalIngredients").innerHTML=
+r[3].map(x=>`<li>${x}</li>`).join("");
+
+document.getElementById("modal").style.display="flex";
+
+}
+
+
+function closeModal(){
+
+document.getElementById("modal").style.display="none";
+
+}
+
+
+function toast(text){
+
+let t=document.getElementById("toast");
+
+if(!t){
+
+t=document.createElement("div");
+
+t.id="toast";
+
+t.style=`
+position:fixed;
+right:20px;
+bottom:20px;
+background:#4c343e;
+color:white;
+padding:13px 18px;
+border-radius:14px;
+z-index:200;
+`;
+
+document.body.appendChild(t);
+
+}
+
+t.textContent=text;
+t.style.display="block";
+
+clearTimeout(window.toastTimer);
+
+window.toastTimer=
+setTimeout(()=>t.style.display="none",2200);
+
+}
+
+
+function escapeHTML(text){
+
+return text.replace(/[&<>"']/g,function(m){
+
+return {
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[m];
+
+});
+
+}
+
+
+document.querySelectorAll("[data-page]")
+.forEach(button=>{
+
+button.addEventListener(
+"click",
+()=>go(button.dataset.page)
+);
+
+});
+
+
+document.getElementById("modal")
+.addEventListener("click",e=>{
+
+if(e.target.id==="modal"){
+closeModal();
+}
+
+});
+
+
+renderRecipes();
+renderPrograms();
+renderWorkouts();
+renderHobbies();
+renderVlogs();
+renderMissions();
+renderDiary();
+
+</script>
+
+</body>
+</html>
