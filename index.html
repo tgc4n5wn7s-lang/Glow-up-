@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow Up ✨</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:#fff8fb;
+  color:#352a31;
+  min-height:100vh;
+}
+
+button,input,textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+}
+
+:root{
+  --pink:#e89ab5;
+  --dark-pink:#c96f91;
+  --light-pink:#fce5ed;
+  --cream:#fff8fb;
+  --white:#ffffff;
+  --text:#352a31;
+  --muted:#8f7d86;
+  --border:#f1dce4;
+  --gold:#c99b52;
+  --shadow:0 15px 45px rgba(100,55,75,.10);
+  --radius:24px;
+}
+
+/* ---------- AUTH ---------- */
+
+.auth-screen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  background:
+    radial-gradient(circle at top left,#ffe5ef 0,transparent 35%),
+    radial-gradient(circle at bottom right,#f7dfeb 0,transparent 35%),
+    #fff8fb;
+}
+
+.auth-card{
+  width:min(440px,100%);
+  background:rgba(255,255,255,.92);
+  border:1px solid var(--border);
+  border-radius:32px;
+  padding:38px 30px;
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+  font-weight:700;
+  color:#b96382;
+  letter-spacing:-1px;
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+.auth-subtitle{
+  color:var(--muted);
+  margin:8px 0 28px;
+}
+
+.input{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:15px;
+  outline:none;
+  background:#fffafd;
+  margin-bottom:12px;
+}
+
+.input:focus{
+  border-color:var(--pink);
+}
+
+.primary-btn{
+  width:100%;
+  padding:14px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#e99ab6,#c96f91);
+  color:white;
+  font-weight:700;
+  box-shadow:0 8px 20px rgba(201,111,145,.22);
+}
+
+.demo{
+  margin-top:15px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* ---------- APP ---------- */
+
+.app{
+  display:none;
+  min-height:100vh;
+}
+
+.topbar{
+  height:74px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 28px;
+}
+
+.brand{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  color:#b96382;
+}
+
+.brand span{
+  color:var(--gold);
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.icon-btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#fff5f8;
+  color:#7d5c69;
+  display:grid;
+  place-items:center;
+  font-size:18px;
+}
+
+.avatar-mini{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#f4bfd0,#d888a5);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-weight:700;
+}
+
+/* ---------- LAYOUT ---------- */
+
+.layout{
+  display:grid;
+  grid-template-columns:230px 1fr;
+  min-height:calc(100vh - 74px);
+}
+
+.sidebar{
+  border-right:1px solid var(--border);
+  background:#fffafb;
+  padding:25px 15px;
+  position:sticky;
+  top:74px;
+  height:calc(100vh - 74px);
+}
+
+.nav-item{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:13px 15px;
+  margin-bottom:7px;
+  border-radius:15px;
+  background:transparent;
+  color:#765d68;
+  font-weight:600;
+  text-align:left;
+}
+
+.nav-item:hover,
+.nav-item.active{
+  background:#fde8ef;
+  color:#b85f7e;
+}
+
+.nav-icon{
+  width:22px;
+  text-align:center;
+}
+
+.main{
+  max-width:1200px;
+  width:100%;
+  margin:auto;
+  padding:30px;
+}
+
+/* ---------- PAGE ---------- */
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.page-title{
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  margin-bottom:5px;
+}
+
+.page-subtitle{
+  color:var(--muted);
+  margin-bottom:25px;
+}
+
+/* ---------- DASHBOARD ---------- */
+
+.hero{
+  background:
+    radial-gradient(circle at 90% 20%,rgba(255,255,255,.9),transparent 30%),
+    linear-gradient(135deg,#f7d6e1,#fff1f5);
+  border:1px solid #f0d5df;
+  border-radius:30px;
+  padding:30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+  margin-bottom:25px;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  margin-bottom:8px;
+}
+
+.hero p{
+  color:#775f68;
+}
+
+.hero-badge{
+  min-width:115px;
+  height:115px;
+  border-radius:50%;
+  background:rgba(255,255,255,.75);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  border:5px solid rgba(255,255,255,.7);
+  box-shadow:var(--shadow);
+}
+
+.hero-badge strong{
+  display:block;
+  font-size:28px;
+  color:#bd6a87;
+}
+
+.hero-badge small{
+  color:var(--muted);
+}
+
+/* ---------- STATS ---------- */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.stat{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:20px;
+  box-shadow:0 8px 25px rgba(90,50,70,.05);
+}
+
+.stat-icon{
+  font-size:23px;
+}
+
+.stat-value{
+  font-size:25px;
+  font-weight:700;
+  margin-top:8px;
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* ---------- CARDS ---------- */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:23px;
+  padding:20px;
+  box-shadow:0 8px 25px rgba(90,50,70,.05);
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:28px 0 15px;
+}
+
+.section-head h2{
+  font-family:'Playfair Display',serif;
+}
+
+/* ---------- PROGRESS ---------- */
+
+.progress-wrap{
+  margin-top:15px;
+}
+
+.progress-top{
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:7px;
+}
+
+.progress{
+  height:9px;
+  background:#f5e4ea;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#e99ab6,#c96f91);
+  border-radius:20px;
+  transition:.5s;
+}
+
+/* ---------- MISSIONS ---------- */
+
+.mission{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:18px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  margin-bottom:12px;
+}
+
+.mission.locked{
+  opacity:.5;
+}
+
+.mission.done{
+  background:#fff5f8;
+}
+
+.mission-icon{
+  width:52px;
+  height:52px;
+  flex-shrink:0;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  background:#fde8ef;
+  font-size:24px;
+}
+
+.mission-content{
+  flex:1;
+}
+
+.mission-content h3{
+  margin-bottom:3px;
+}
+
+.mission-content p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.xp{
+  color:#b66a84;
+  font-weight:700;
+  font-size:13px;
+}
+
+.complete-btn{
+  padding:10px 13px;
+  border-radius:12px;
+  background:#f8dce6;
+  color:#a95776;
+  font-weight:700;
+}
+
+.complete-btn:disabled{
+  cursor:not-allowed;
+}
+
+/* ---------- PROFILE ---------- */
+
+.profile-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:28px;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:25px;
+  margin-bottom:25px;
+}
+
+.profile-avatar{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#f4bfd0,#c87898);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-size:48px;
+  font-weight:700;
+  border:7px solid #fff0f5;
+}
+
+.profile-name{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+}
+
+.username{
+  color:#b66a84;
+  margin:4px 0 12px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:15px;
+}
+
+.tag{
+  background:#fff0f5;
+  color:#a85b78;
+  padding:7px 11px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:600;
+}
+
+/* ---------- BADGES ---------- */
+
+.badges{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.badge{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+}
+
+.badge-icon{
+  font-size:36px;
+  margin-bottom:8px;
+}
+
+.badge.locked{
+  filter:grayscale(1);
+  opacity:.45;
+}
+
+/* ---------- COMMUNITY ---------- */
+
+.community-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.post{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:23px;
+  overflow:hidden;
+}
+
+.post-image{
+  height:250px;
+  background:linear-gradient(135deg,#f6d5df,#ead6dc);
+  display:grid;
+  place-items:center;
+  font-size:70px;
+}
+
+.post-body{
+  padding:17px;
+}
+
+.post-user{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.user-dot{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#e6b5c5;
+  display:grid;
+  place-items:center;
+  color:white;
+  font-weight:700;
+}
+
+.post-actions{
+  display:flex;
+  gap:15px;
+  margin-top:14px;
+  color:#765d68;
+}
+
+.like-btn.liked{
+  color:#d36c91;
+}
+
+/* ---------- SETTINGS ---------- */
+
+.setting{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:white;
+  border:1px solid var(--border);
+  padding:18px;
+  border-radius:18px;
+  margin-bottom:10px;
+}
+
+.setting p{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:3px;
+}
+
+.toggle{
+  width:48px;
+  height:27px;
+  background:#ead8df;
+  border-radius:30px;
+  position:relative;
+}
+
+.toggle::after{
+  content:'';
+  width:21px;
+  height:21px;
+  border-radius:50%;
+  background:white;
+  position:absolute;
+  top:3px;
+  left:4px;
+  transition:.25s;
+}
+
+.toggle.on{
+  background:#d787a2;
+}
+
+.toggle.on::after{
+  left:23px;
+}
+
+/* ---------- MOBILE ---------- */
+
+.mobile-nav{
+  display:none;
+}
+
+@media(max-width:900px){
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+  .sidebar{
+    display:none;
+  }
+
+  .main{
+    padding:20px 15px 90px;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .grid,
+  .community-grid{
+    grid-template-columns:1fr;
+  }
+
+  .badges{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .profile-card{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .profile-avatar{
+    margin:auto;
+  }
+
+  .tags{
+    justify-content:center;
+  }
+
+  .mobile-nav{
+    display:flex;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:68px;
+    background:rgba(255,255,255,.96);
+    border-top:1px solid var(--border);
+    z-index:100;
+    justify-content:space-around;
+    align-items:center;
+  }
+
+  .mobile-nav button{
+    background:none;
+    color:#866b76;
+    font-size:20px;
+  }
+
+  .mobile-nav button.active{
+    color:#c46e8d;
+  }
+
+  .hero{
+    padding:22px;
+  }
+
+  .hero h1{
+    font-size:30px;
+  }
+
+  .hero-badge{
+    min-width:90px;
+    height:90px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= AUTH ================= -->
+
+<section class="auth-screen" id="authScreen">
+  <div class="auth-card">
+    <div class="logo">Glow <span>Up</span> ✨</div>
+    <p class="auth-subtitle">
+      Become the best version of yourself.
+    </p>
+
+    <input id="nameInput" class="input" type="text" placeholder="Your name">
+
+    <input id="usernameInput" class="input" type="text" placeholder="@username">
+
+    <button class="primary-btn" onclick="enterApp()">
+      Start my Glow Up ✨
+    </button>
+
+    <p class="demo">
+      Demo version — your progress is saved on this device.
+    </p>
+  </div>
+</section>
+
+
+<!-- ================= APP ================= -->
+
+<div class="app" id="app">
+
+  <header class="topbar">
+    <div class="brand">Glow <span>Up</span></div>
+
+    <div class="top-actions">
+      <button class="icon-btn" onclick="showPage('community')">♡</button>
+      <button class="icon-btn" onclick="showPage('settings')">⚙</button>
+      <div class="avatar-mini" id="miniAvatar">G</div>
+    </div>
+  </header>
+
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <button class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')">
+        <span class="nav-icon">⌂</span> Dashboard
+      </button>
+
+      <button class="nav-item" data-page="missions" onclick="showPage('missions')">
+        <span class="nav-icon">🎯</span> Missions
+      </button>
+
+      <button class="nav-item" data-page="profile" onclick="showPage('profile')">
+        <span class="nav-icon">♡</span> My Profile
+      </button>
+
+      <button class="nav-item" data-page="community" onclick="showPage('community')">
+        <span class="nav-icon">👭</span> Community
+      </button>
+
+      <button class="nav-item" data-page="badges" onclick="showPage('badges')">
+        <span class="nav-icon">🏅</span> Badges
+      </button>
+
+      <button class="nav-item" data-page="settings" onclick="showPage('settings')">
+        <span class="nav-icon">⚙</span> Settings
+      </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+      <!-- DASHBOARD -->
+
+      <section class="page active" id="dashboard">
+
+        <div class="hero">
+          <div>
+            <p id="welcomeSmall">Welcome back ✨</p>
+            <h1 id="welcomeName">Beautiful girl.</h1>
+            <p>
+              Your glow up is a journey, not a destination.
+            </p>
+          </div>
+
+          <div class="hero-badge">
+            <div>
+              <strong id="levelHero">1</strong>
+              <small>LEVEL</small>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="stats">
+
+          <div class="stat">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-value" id="xpStat">0</div>
+            <div class="stat-label">Total XP</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">🔥</div>
+            <div class="stat-value" id="streakStat">0</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-value" id="missionStat">0</div>
+            <div class="stat-label">Missions Done</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">🏅</div>
+            <div class="stat-value" id="badgeStat">0</div>
+            <div class="stat-label">Badges</div>
+          </div>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="section-head" style="margin-top:0">
+            <h2>Your Level Progress</h2>
+            <span id="levelText">Level 1</span>
+          </div>
+
+          <div class="progress-wrap">
+            <div class="progress-top">
+              <span id="currentXP">0 XP</span>
+              <span id="nextXP">100 XP</span>
+            </div>
+
+            <div class="progress">
+              <div class="progress-fill" id="levelProgress"></div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="section-head">
+          <h2>Today's Glow ✨</h2>
+          <button class="complete-btn" onclick="showPage('missions')">
+            View missions
+          </button>
+        </div>
+
+
+        <div class="grid">
+
+          <div class="card">
+            <h3>💧 Hydration</h3>
+            <p>Drink enough water and take care of your body.</p>
+          </div>
+
+          <div class="card">
+            <h3>🧘‍♀️ Movement</h3>
+            <p>Move your body for at least 20 minutes today.</p>
+          </div>
+
+          <div class="card">
+            <h3>📖 Mind</h3>
+            <p>Read, journal or learn something new.</p>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- MISSIONS -->
+
+      <section class="page" id="missions">
+
+        <h1 class="page-title">Your Missions 🎯</h1>
+        <p class="page-subtitle">
+          Complete each mission to unlock the next one.
+        </p>
+
+        <div id="missionsList"></div>
+
+      </section>
+
+
+      <!-- PROFILE -->
+
+      <section class="page" id="profile">
+
+        <h1 class="page-title">My Profile 🪪</h1>
+        <p class="page-subtitle">
+          Your Glow Up identity card.
+        </p>
+
+        <div class="profile-card">
+
+          <div class="profile-avatar" id="profileAvatar">G</div>
+
+          <div>
+            <div class="profile-name" id="profileName">
+              Glow Girl
+            </div>
+
+            <div class="username" id="profileUsername">
+              @glowgirl
+            </div>
+
+            <p>
+              ✨ Becoming a better version of myself every day.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Self Care</span>
+              <span class="tag">Wellness</span>
+              <span class="tag">Beauty</span>
+              <span class="tag">Lifestyle</span>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="grid">
+
+          <div class="card">
+            <h3>⭐ Level</h3>
+            <p id="profileLevel">Level 1</p>
+          </div>
+
+          <div class="card">
+            <h3>🔥 Streak</h3>
+            <p id="profileStreak">0 days</p>
+          </div>
+
+          <div class="card">
+            <h3>🎯 Missions</h3>
+            <p id="profileMissions">0 completed</p>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- COMMUNITY -->
+
+      <section class="page" id="community">
+
+        <h1 class="page-title">Glow Community 👭</h1>
+        <p class="page-subtitle">
+          Share your journey, inspire other girls and celebrate every win.
+        </p>
+
+        <div class="card" style="margin-bottom:20px">
+
+          <h3>✨ Create a post</h3>
+
+          <textarea
+            id="postText"
+            class="input"
+            style="margin-top:12px;resize:none"
+            rows="3"
+            placeholder="Share something from your Glow Up..."
+          ></textarea>
+
+          <button
+            class="primary-btn"
+            style="width:auto;padding:11px 18px"
+            onclick="createPost()"
+          >
+            Post ✨
+          </button>
+
+        </div>
+
+
+        <div class="community-grid" id="postsContainer">
+
+          <article class="post">
+
+            <div class="post-image">🧘‍♀️</div>
+
+            <div class="post-body">
+
+              <div class="post-user">
+                <div class="user-dot">L</div>
+                <div>
+                  <strong>Lina</strong><br>
+                  <small style="color:#9a818b">@lina.glow</small>
+                </div>
+              </div>
+
+              <p>
+                Morning Pilates done! Starting my day with good energy ✨
+              </p>
+
+              <div class="post-actions">
+                <button onclick="likePost(this)">♡ Like</button>
+                <span>💬 Comment</span>
+                <span>↗ Share</span>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="post">
+
+            <div class="post-image">🥗</div>
+
+            <div class="post-body">
+
+              <div class="post-user">
+                <div class="user-dot">S</div>
+                <div>
+                  <strong>Sarah</strong><br>
+                  <small style="color:#9a818b">@sarah.daily</small>
+                </div>
+              </div>
+
+              <p>
+                Healthy breakfast = better mood 🌸
+              </p>
+
+              <div class="post-actions">
+                <button onclick="likePost(this)">♡ Like</button>
+                <span>💬 Comment</span>
+                <span>↗ Share</span>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="post">
+
+            <div class="post-image">💄</div>
+
+            <div class="post-body">
+
+              <div class="post-user">
+                <div class="user-dot">N</div>
+                <div>
+                  <strong>Nour</strong><br>
+                  <small style="color:#9a818b">@nour.glow</small>
+                </div>
+              </div>
+
+              <p>
+                Little self-care moments matter too 💗
+              </p>
+
+              <div class="post-actions">
+                <button onclick="likePost(this)">♡ Like</button>
+                <span>💬 Comment</span>
+                <span>↗ Share</span>
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- BADGES -->
+
+      <section class="page" id="badges">
+
+        <h1 class="page-title">Your Badges 🏅</h1>
+        <p class="page-subtitle">
+          Little achievements that show your progress.
+        </p>
+
+        <div class="badges" id="badgesList"></div>
+
+      </section>
+
+
+      <!-- SETTINGS -->
+
+      <section class="page" id="settings">
+
+        <h1 class="page-title">Settings ⚙️</h1>
+        <p class="page-subtitle">
+          Make Glow Up feel like yours.
+        </p>
+
+
+        <div class="setting">
+
+          <div>
+            <strong>Community Profile</strong>
+            <p>Allow other girls to discover your profile.</p>
+          </div>
+
+          <button
+            class="toggle on"
+            onclick="toggleSetting(this)"
+          ></button>
+
+        </div>
+
+
+        <div class="setting">
+
+          <div>
+            <strong>Public Posts</strong>
+            <p>Allow your posts to appear in the community.</p>
+          </div>
+
+          <button
+            class="toggle on"
+            onclick="toggleSetting(this)"
+          ></button>
+
+        </div>
+
+
+        <div class="setting">
+
+          <div>
+            <strong>Notifications</strong>
+            <p>Receive reminders for your missions.</p>
+          </div>
+
+          <button
+            class="toggle on"
+            onclick="toggleSetting(this)"
+          ></button>
+
+        </div>
+
+
+        <div class="card" style="margin-top:20px">
+
+          <h3>🔒 Privacy</h3>
+
+          <p style="margin-top:8px">
+            Your profile and posts should only be shared according
+            to the privacy choices you make.
+          </p>
+
+        </div>
+
+
+        <button
+          class="complete-btn"
+          style="margin-top:20px"
+          onclick="logout()"
+        >
+          Log out
+        </button>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- MOBILE NAV -->
+
+  <nav class="mobile-nav">
+
+    <button
+      class="active"
+      data-mobile="dashboard"
+      onclick="showPage('dashboard')"
+    >⌂</button>
+
+    <button
+      data-mobile="missions"
+      onclick="showPage('missions')"
+    >🎯</button>
+
+    <button
+      data-mobile="profile"
+      onclick="showPage('profile')"
+    >♡</button>
+
+    <button
+      data-mobile="community"
+      onclick="showPage('community')"
+    >👭</button>
+
+    <button
+      data-mobile="settings"
+      onclick="showPage('settings')"
+    >⚙</button>
+
+  </nav>
+
+</div>
+
+
+<script>
+
+/* ================= DATA ================= */
+
+const missions = [
+
+  {
+    id:1,
+    icon:"💧",
+    title:"Hydration First",
+    description:"Drink 6–8 glasses of water today.",
+    xp:20
+  },
+
+  {
+    id:2,
+    icon:"🧘‍♀️",
+    title:"Move Your Body",
+    description:"Do at least 20 minutes of movement.",
+    xp:30
+  },
+
+  {
+    id:3,
+    icon:"🧴",
+    title:"Self-Care Moment",
+    description:"Take 15 minutes for skincare or self-care.",
+    xp:25
+  },
+
+  {
+    id:4,
+    icon:"📖",
+    title:"Feed Your Mind",
+    description:"Read or learn something for 20 minutes.",
+    xp:30
+  },
+
+  {
+    id:5,
+    icon:"🥗",
+    title:"Nourish Yourself",
+    description:"Choose one balanced meal today.",
+    xp:35
+  },
+
+  {
+    id:6,
+    icon:"🧹",
+    title:"Reset Your Space",
+    description:"Clean and organize one small area.",
+    xp:30
+  },
+
+  {
+    id:7,
+    icon:"💗",
+    title:"Love Yourself",
+    description:"Write 3 things you appreciate about yourself.",
+    xp:40
+  },
+
+  {
+    id:8,
+    icon:"🌙",
+    title:"Night Reset",
+    description:"Create a calm bedtime routine.",
+    xp:40
+  }
+
+];
+
+
+const badgeDefinitions = [
+
+  {
+    icon:"🌱",
+    title:"First Step",
+    description:"Complete your first mission.",
+    condition:1
+  },
+
+  {
+    icon:"🔥",
+    title:"On Fire",
+    description:"Complete 3 missions.",
+    condition:3
+  },
+
+  {
+    icon:"✨",
+    title:"Glow Starter",
+    description:"Complete 5 missions.",
+    condition:5
+  },
+
+  {
+    icon:"👑",
+    title:"Glow Queen",
+    description:"Complete all 8 missions.",
+    condition:8
+  }
+
+];
+
+
+/* ================= STATE ================= */
+
+let state = JSON.parse(
+  localStorage.getItem("glowUpState")
+) || {
+
+  name:"",
+  username:"",
+  xp:0,
+  completed:[],
+  streak:0,
+  posts:[]
+
+};
+
+
+/* ================= SAVE ================= */
+
+function save(){
+
+  localStorage.setItem(
+    "glowUpState",
+    JSON.stringify(state)
+  );
+
+}
+
+
+/* ================= AUTH ================= */
+
+function enterApp(){
+
+  const name =
+    document.getElementById("nameInput").value.trim();
+
+  const username =
+    document.getElementById("usernameInput").value.trim();
+
+  if(!name){
+    alert("Enter your name first 💗");
+    return;
+  }
+
+  state.name = name;
+
+  state.username =
+    username || "@" + name.toLowerCase().replace(/\s+/g,"");
+
+  save();
+
+  document.getElementById("authScreen").style.display="none";
+  document.getElementById("app").style.display="block";
+
+  updateUI();
+
+}
+
+
+function logout(){
+
+  document.getElementById("app").style.display="none";
+  document.getElementById("authScreen").style.display="flex";
+
+}
+
+
+/* ================= NAVIGATION ================= */
+
+function showPage(page){
+
+  document.querySelectorAll(".page")
+    .forEach(p => p.classList.remove("active"));
+
+  const target =
+    document.getElementById(page);
+
+  if(target){
+    target.classList.add("active");
+  }
+
+
+  document.querySelectorAll(".nav-item")
+    .forEach(item => {
+
+      item.classList.toggle(
+        "active",
+        item.dataset.page === page
+      );
+
+    });
+
+
+  document.querySelectorAll(".mobile-nav button")
+    .forEach(btn => {
+
+      btn.classList.toggle(
+        "active",
+        btn.dataset.mobile === page
+      );
+
+    });
+
+}
+
+
+/* ================= MISSIONS ================= */
+
+function renderMissions(){
+
+  const container =
+    document.getElementById("missionsList");
+
+  container.innerHTML="";
+
+  missions.forEach((mission,index)=>{
+
+    const completed =
+      state.completed.includes(mission.id);
+
+    const previousCompleted =
+      index === 0 ||
+      state.completed.includes(
+        missions[index-1].id
+      );
+
+    const locked =
+      !completed && !previousCompleted;
+
+
+    const div =
+      document.createElement("div");
+
+    div.className =
+      "mission" +
+      (completed ? " done" : "") +
+      (locked ? " locked" : "");
+
+
+    div.innerHTML = `
+
+      <div class="mission-icon">
+        ${mission.icon}
+      </div>
+
+      <div class="mission-content">
+
+        <h3>
+          Mission ${mission.id} · ${mission.title}
+        </h3>
+
+        <p>
+          ${mission.description}
+        </p>
+
+      </div>
+
+      <div class="xp">
+        +${mission.xp} XP
+      </div>
+
+      <button
+        class="complete-btn"
+        ${completed || locked ? "disabled" : ""}
+        onclick="completeMission(${mission.id})"
+      >
+
+        ${
+          completed
+          ? "✓ Done"
+          : locked
+          ? "🔒 Locked"
+          : "Complete"
+        }
+
+      </button>
+
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+
+function completeMission(id){
+
+  if(state.completed.includes(id))
+    return;
+
+
+  const mission =
+    missions.find(m => m.id === id);
+
+  if(!mission)
+    return;
+
+
+  const index =
+    missions.findIndex(m => m.id === id);
+
+
+  if(index > 0){
+
+    const previous =
+      missions[index-1];
+
+    if(!state.completed.includes(previous.id)){
+      return;
+    }
+
+  }
+
+
+  state.completed.push(id);
+
+  state.xp += mission.xp;
+
+  state.streak =
+    Math.max(
+      state.streak,
+      state.completed.length
+    );
+
+
+  save();
+
+  updateUI();
+
+}
+
+
+/* ================= LEVEL ================= */
+
+function getLevel(){
+
+  return Math.floor(state.xp / 100) + 1;
+
+}
+
+
+function getLevelProgress(){
+
+  return state.xp % 100;
+
+}
+
+
+/* ================= BADGES ================= */
+
+function getUnlockedBadges(){
+
+  return badgeDefinitions.filter(
+    badge =>
+      state.completed.length >= badge.condition
+  );
+
+}
+
+
+function renderBadges(){
+
+  const container =
+    document.getElementById("badgesList");
+
+  container.innerHTML="";
+
+
+  badgeDefinitions.forEach(badge=>{
+
+    const unlocked =
+      state.completed.length >= badge.condition;
+
+
+    const div =
+      document.createElement("div");
+
+    div.className =
+      "badge" +
+      (unlocked ? "" : " locked");
+
+
+    div.innerHTML = `
+
+      <div class="badge-icon">
+        ${badge.icon}
+      </div>
+
+      <strong>
+        ${badge.title}
+      </strong>
+
+      <p style="margin-top:5px;color:#91808a;font-size:13px">
+        ${badge.description}
+      </p>
+
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+
+/* ================= UI ================= */
+
+function updateUI(){
+
+  const level =
+    getLevel();
+
+  const progress =
+    getLevelProgress();
+
+
+  const firstLetter =
+    (state.name || "G")
+      .charAt(0)
+      .toUpperCase();
+
+
+  document.getElementById("welcomeName")
+    .textContent =
+    state.name
+      ? `Welcome back, ${state.name} ✨`
+      : "Beautiful girl.";
+
+
+  document.getElementById("miniAvatar")
+    .textContent =
+    firstLetter;
+
+
+  document.getElementById("profileAvatar")
+    .textContent =
+    firstLetter;
+
+
+  document.getElementById("profileName")
+    .textContent =
+    state.name || "Glow Girl";
+
+
+  document.getElementById("profileUsername")
+    .textContent =
+    state.username || "@glowgirl";
+
+
+  document.getElementById("xpStat")
+    .textContent =
+    state.xp;
+
+
+  document.getElementById("streakStat")
+    .textContent =
+    state.streak;
+
+
+  document.getElementById("missionStat")
+    .textContent =
+    state.completed.length;
+
+
+  document.getElementById("badgeStat")
+    .textContent =
+    getUnlockedBadges().length;
+
+
+  document.getElementById("levelHero")
+    .textContent =
+    level;
+
+
+  document.getElementById("levelText")
+    .textContent =
+    "Level " + level;
+
+
+  document.getElementById("currentXP")
+    .textContent =
+    progress + " XP";
+
+
+  document.getElementById("nextXP")
+    .textContent =
+    "100 XP";
+
+
+  document.getElementById("levelProgress")
+    .style.width =
+    progress + "%";
+
+
+  document.getElementById("profileLevel")
+    .textContent =
+    "Level " + level;
+
+
+  document.getElementById("profileStreak")
+    .textContent =
+    state.streak + " days";
+
+
+  document.getElementById("profileMissions")
+    .textContent =
+    state.completed.length + " completed";
+
+
+  renderMissions();
+
+  renderBadges();
+
+}
+
+
+/* ================= COMMUNITY ================= */
+
+function likePost(button){
+
+  button.classList.toggle("liked");
+
+  button.textContent =
+    button.classList.contains("liked")
+    ? "♥ Liked"
+    : "♡ Like";
+
+}
+
+
+function createPost(){
+
+  const text =
+    document.getElementById("postText")
+      .value
+      .trim();
+
+
+  if(!text){
+    alert("Write something first ✨");
+    return;
+  }
+
+
+  if(state.posts.length >= 10){
+    state.posts.shift();
+  }
+
+
+  state.posts.push({
+    text:text,
+    name:state.name || "Glow Girl",
+    username:state.username || "@glowgirl"
+  });
+
+
+  save();
+
+
+  document.getElementById("postText")
+    .value="";
+
+
+  renderUserPosts();
+
+}
+
+
+function renderUserPosts(){
+
+  const container =
+    document.getElementById("postsContainer");
+
+
+  state.posts
+    .slice()
+    .reverse()
+    .forEach(post=>{
+
+      const article =
+        document.createElement("article");
+
+      article.className="post";
+
+
+      article.innerHTML = `
+
+        <div class="post-image">
+          ✨
+        </div>
+
+        <div class="post-body">
+
+          <div class="post-user">
+
+            <div class="user-dot">
+              ${(post.name || "G").charAt(0).toUpperCase()}
+            </div>
+
+            <div>
+              <strong>
+                ${escapeHTML(post.name)}
+              </strong>
+
+              <br>
+
+              <small style="color:#9a818b">
+                ${escapeHTML(post.username)}
+              </small>
+            </div>
+
+          </div>
+
+          <p>
+            ${escapeHTML(post.text)}
+          </p>
+
+          <div class="post-actions">
+
+            <button onclick="likePost(this)">
+              ♡ Like
+            </button>
+
+            <span>💬 Comment</span>
+            <span>↗ Share</span>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      container.prepend(article);
+
+    });
+
+}
+
+
+function escapeHTML(text){
+
+  const div =
+    document.createElement("div");
+
+  div.textContent=text;
+
+  return div.innerHTML;
+
+}
+
+
+/* ================= SETTINGS ================= */
+
+function toggleSetting(button){
+
+  button.classList.toggle("on");
+
+}
+
+
+/* ================= START ================= */
+
+if(state.name){
+
+  document.getElementById("authScreen")
+    .style.display="none";
+
+  document.getElementById("app")
+    .style.display="block";
+
+  updateUI();
+
+}
+
+</script>
+
+</body>
+</html>
